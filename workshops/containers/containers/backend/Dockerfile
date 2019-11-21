@@ -21,10 +21,6 @@ RUN apk add --no-cache postgresql-libs bash && \
     python3 -m pip install -r requirements.txt --no-cache-dir && \
     apk --purge del .build-deps
 
-# configure API version
-ARG API_VERSION=0
-ENV API_VERSION=$API_VERSION
-
 # copy container scripts
 ENV PATH=/scripts:$PATH
 COPY containers/backend /scripts
