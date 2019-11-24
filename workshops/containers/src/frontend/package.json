@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/register": "^7.7.4",
+    "dotenv": "^8.2.0",
     "mocha": "^6.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -32,6 +33,9 @@
     ]
   },
   "babel": {
-    "presets": ["@babel/preset-react", "@babel/preset-env"]
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
   }
 }
