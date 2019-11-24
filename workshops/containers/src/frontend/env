@@ -1,0 +1,9 @@
+#
+# Cnative
+# Containers Workshop
+# Frontend Env Config 
+#
+
+API_HOST=localhost:5000
+API_PROTOCOL=http
+API_VERSION=0
