@@ -10,7 +10,7 @@ services:
     image: postgres:12.0-alpine
     ports:
       - "5432:5432"
-    env_file: ".env"
+    env_file: "src/backend/.env"
   # memento-backend container
   backend:
     image: mrzzy/memento-backend
@@ -21,7 +21,7 @@ services:
       - "5000:5000"
     volumes:
       - database-data:/usr/local/pgsql/data
-    env_file: ".env"
+    env_file: "src/backend/.env"
     depends_on:
       - postgres
 volumes:
