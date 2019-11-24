@@ -14,9 +14,10 @@ export default class API {
     constructor() {
         // load config from environment 
         dotenv.config();
-        this.apiHost = process.env.API_HOST;
-        this.apiVersion = process.env.API_VERSION;
-        this.protocol = process.env.API_PROTOCOL;
+        this.apiHost = process.env.REACT_APP_API_HOST;
+        this.apiVersion = process.env.REACT_APP_API_VERSION;
+        this.protocol = process.env.REACT_APP_API_PROTOCOL;
+        console.log(process.env.REACT_APP_API_VERSION);
         // check protocol support
         assert(this.protocol === "http" || this.protocol === "https");
     
