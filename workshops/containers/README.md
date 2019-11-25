@@ -10,6 +10,13 @@ In this practical, we will apply the container know how we learnt by:
 - deploying the stack on a Google Cloud server.
 
 ## Instructions
+### Install Docker & Docker-Compose
+0. Install Docker 
+    - Windows
+        - Windows 10 64-bit: Pro, Enterprise, or Education with Hyper-V enabled: [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)
+        - Other Windows: [Docker Toolbox](https://docs.docker.com/toolbox/overview/)
+    - MacOS [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
+    - Linux [get-docker.sh](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script)
 
 ### Building Docker Images
 1. use Docker to containerize a backend of a web application.
