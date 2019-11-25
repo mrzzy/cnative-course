@@ -103,5 +103,5 @@ Infomation about the web application that are useful for this practical:
 
 | Environment Variable | Description |
 | --- | --- |
-| `REACT_APP_API_HOST` | DNS name/IP address where clients can access the backend API |
-| `REACT_APP_API_HOST` | DNS name/IP address where clients can access the backend API |
+| `BACKEND_HOST` | DNS name/IP address where clients can access the backend |
+| `REACT_APP_API_HOST` | DNS name/IP address where external clients can access the backend API |
