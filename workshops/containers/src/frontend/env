@@ -1,9 +1,0 @@
-#
-# Cnative
-# Containers Workshop
-# Frontend Env Config 
-#
-
-REACT_APP_API_HOST=localhost:5000
-REACT_APP_API_PROTOCOL=http
-REACT_APP_API_VERSION=0

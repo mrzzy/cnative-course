@@ -10,7 +10,7 @@ services:
     image: postgres:12.0-alpine
     ports:
       - "5432:5432"
-    env_file: "src/backend/.env"
+    env_file: ".env"
     volumes:
       - database-data:/usr/local/pgsql/data
   backend:
@@ -20,19 +20,25 @@ services:
       dockerfile: containers/backend/Dockerfile
     ports:
       - "5000:5000"
-    env_file: "src/backend/.env"
+    env_file: ".env"
+    environment:
+      - "DATABASE_HOST=postgres:5432"
     depends_on:
       - postgres
   frontend:
     image: mrzzy/memento-frontend
     build:
-      target: develop
+      target: production
       context: .
       dockerfile: containers/frontend/Dockerfile
-    ports:
+    ports: 
       - "3000:3000"
-    env_file: "src/frontend/.env"
+    env_file: ".env"
+    environment:
+      - "REACT_APP_API_HOST=backend:5000"
     volumes:
       - "./src/frontend:/frontend:ro"
+    depends_on:
+      - backend
 volumes:
   database-data:
