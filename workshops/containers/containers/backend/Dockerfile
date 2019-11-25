@@ -6,10 +6,8 @@
 
 FROM python:3.7-alpine as develop
 
-# setup nonroot user to drop root permissions
-RUN addgroup -S user && adduser -S user -G user
-RUN mkdir /backend && chown user /backend 
-RUN mkdir /scripts && chown user /scripts 
+RUN mkdir /backend 
+RUN mkdir /scripts 
 ENV HOME=/backend/
 WORKDIR /backend
 
