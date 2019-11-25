@@ -16,12 +16,17 @@ COPY src/frontend/package.json /frontend/
 COPY src/frontend/yarn.lock /frontend/
 RUN yarn install
 
+# copy scripts
+COPY containers/frontend /scripts
+RUN chmod -R u+x /scripts/
+
 # copy application source code
 COPY src/frontend /frontend
 
 # development build entrypoint
 EXPOSE 3000
-CMD yarn start
+ENTRYPOINT [ "/scripts/entrypoint.sh" ]
+CMD [ "yarn", "start" ]
 
 ## production build
 # build production files
@@ -37,4 +42,4 @@ RUN yarn init --yes && yarn add serve
 
 # production entrypoint
 EXPOSE 3000
-CMD yarn serve -l 3000 -s /serve
+CMD [ "yarn", "serve", "-l", "3000", "-s",  "/serve" ]
