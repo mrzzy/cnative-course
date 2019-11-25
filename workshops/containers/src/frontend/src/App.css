@@ -1,0 +1,50 @@
+ @import url('https://fonts.googleapis.com/css?family=Roboto:500&display=swap');
+
+.App {
+    text-align: center;
+    margin-top: 2em;
+    font-family: "Roboto";
+}
+
+
+.App-header {
+    font-size: 1.2em;
+    color: lightgrey;
+    margin: 2em;
+}
+
+.App main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.card {
+    width: 32em;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.15);
+    margin: 2vmax;
+    border-radius: 12pt;
+    padding: 0.8em 0.8em;
+}
+
+.Org {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Org h3 {
+    font-size: 2.4em;
+    color: black;
+}
+
+.Org img {
+    width: 20%;
+    object-fit: contain;
+}
+
+.OrgForm {
+    margin: 2em;
+}
