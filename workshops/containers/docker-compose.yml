@@ -4,7 +4,7 @@
 # Development Stack
 #
 
-version: "3"
+version: "3.4"
 services:
   postgres:
     image: postgres:12.0-alpine
@@ -26,6 +26,7 @@ services:
   frontend:
     image: mrzzy/memento-frontend
     build:
+      target: develop
       context: .
       dockerfile: containers/frontend/Dockerfile
     ports:
