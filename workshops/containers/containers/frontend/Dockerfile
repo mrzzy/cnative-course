@@ -19,6 +19,7 @@ RUN yarn install
 # copy scripts
 COPY containers/frontend /scripts
 RUN chmod -R u+x /scripts/
+ENV PATH=/scripts:$PATH
 
 # copy application source code
 COPY src/frontend /frontend
