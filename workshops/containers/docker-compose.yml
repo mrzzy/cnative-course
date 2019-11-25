@@ -4,7 +4,7 @@
 # Development Stack
 #
 
-version: "3.4"
+version: "3"
 services:
   postgres:
     image: postgres:12.0-alpine
@@ -28,14 +28,14 @@ services:
   frontend:
     image: mrzzy/memento-frontend
     build:
-      target: production
       context: .
       dockerfile: containers/frontend/Dockerfile
     ports: 
       - "3000:3000"
     env_file: ".env"
     environment:
-      - "REACT_APP_API_HOST=backend:5000"
+      - "BACKEND_HOST=backend:5000"
+      - "REACT_APP_API_HOST=localhost:5000"
     volumes:
       - "./src/frontend:/frontend:ro"
     depends_on:

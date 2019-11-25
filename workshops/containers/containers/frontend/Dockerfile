@@ -28,19 +28,3 @@ COPY src/frontend /frontend
 EXPOSE 3000
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
 CMD [ "yarn", "start" ]
-
-## production build
-# build production files
-RUN yarn build
-
-# copy production files to new production stage
-FROM node:12.2.0-alpine AS production
-RUN mkdir -p /serve
-COPY --from=develop /frontend/build /serve
-
-# install production server
-RUN yarn init --yes && yarn add serve
-
-# production entrypoint
-EXPOSE 3000
-CMD [ "yarn", "serve", "-l", "3000", "-s",  "/serve" ]
