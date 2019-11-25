@@ -3,14 +3,67 @@ Practical for Workshop on Containers with Docker
 
 ## Intro
 In this practical, we will apply the container know how we learnt by:
-- use Docker to containerize a backend of a web application.
-- use Docker to containerize a frontend of a web application.
-- use Docker Compose hook up the containers to allow them to work together.
+- using Docker to containerize a backend of a web application.
+- using Docker to containerize a frontend of a web application.
+- using Docker Compose hook up the containers to allow them to work together.
     - use a pre-built docker image to provide a database to the backend.
-- deploy the stack on a Google Cloud server.
+- deploying the stack on a Google Cloud server.
+
+## Instructions
+
+### Building Docker Images
+1. use Docker to containerize a backend of a web application.
+    - complete `containers/backend/Dockerfile` to build the backend docker container
+2. use Docker to containerize a frontend of a web application.
+    - complete `containers/frontend/Dockerfile` to build the frontend docker container
+
+### Hooking up Images with Compose
+3. use Docker Compose hook up the containers to allow them to work together.
+    - register for account on [Docker Hub](https://hub.docker.com/). Take note of your username (aka docker id)
+    - authenticate with your new docker hub account on your machine with `docker login`
+    - complete `docker-compose.yml` to define the app's stack
+        - make sure you tag the docker images that you in the format: `<username>/<name of image>`
+    - make a copy `env` as `.env` and complete it with environment config
+    - run `docker-compose build` to build the images
+    - push the built images to Docker Hub with `docker-compose push`
+### Deploying on Google Cloud
+4. deploying the stack on a Google Cloud server.
+    1. start a cloud server on [Google Compute Engine](https://console.cloud.google.com/compute/instances?project=cnative-259900)
+         ![Google Cloud Compute Engine](./assets/gce_create_instance.png)
+         - click `Create Instance` to start the wizard to create an instance 
+         - name the server instance in the format: `container-ws-<your-name-separated-by-dashes>`
+         - use the region that you have been assigned. Leave the zone as default
+         - select the Ubuntu 18.04 LTS image to create the boot disk. Leave type and size as default.
+         - check `Allow HTTP traffic` to allow access to the frontend once deployed.
+         - create the cloud server
+    ---
+    2. ![GCE Instance Status](./assets/gce_instance_status.png)
+        - wait for your cloud server to start up. (wait for green tick).
+        - connect to your cloud server by clicking the `SSH` button
+    3. Install `docker` and `docker-compose`
+        - run `get-docker.sh` script to install docker
+            - `curl -fsSL https://get.docker.com -o get-docker.sh`
+            - `sudo sh get-docker.sh`
+        - install docker-compose
+            - `sudo apt-get install python3-pip`
+            - `sudo pip3 install docker-compose`
+    4. Deploy the stack with `docker-compose`
+        - using a text editor (ie `nano`) copy the `.env` file to your server
+        - using a text editor (ie `nano`) copy the `docker-compose.yml` file to your server
+        - pull the docker images from Docker Hub:
+            - `sudo docker pull <username>/postgres:12.0-alpine`
+            - `sudo docker pull <username>/memento-backend`
+            - `sudo docker pull <username>/memento-frontend`
+        - using a text editor (ie `nano`) and edit the `docker-compose.yml` file 
+            - change the host port mapping for frontend  from `3000` to `80`
+            - change the host port mapping for backend  from `5000` to `443`
+        - delete the volumes section for the frontend in `docker-compose.yml`
+        - bring up the stack with `sudo docker-compose up`
+    5. ![GCE Instance Status](./assets/gce_instance_status.png)
+        - Access the app at the your server's external IP
 
 ## App Infomation
-Infomation about the web application used in this practical:
+Infomation about the web application that are useful for this practical:
 - Database - provides data storage for the backend 
 
 | Attribute | Description | Value |
@@ -50,4 +103,5 @@ Infomation about the web application used in this practical:
 
 | Environment Variable | Description |
 | --- | --- |
-| `REACT_APP_API_HOST` | DNS name/IP address of the backend server |
+| `REACT_APP_API_HOST` | DNS name/IP address where clients can access the backend API |
+| `REACT_APP_API_HOST` | DNS name/IP address where clients can access the backend API |
