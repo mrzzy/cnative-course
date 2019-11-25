@@ -28,7 +28,7 @@ Infomation about the web application used in this practical:
 
 | Attribute | Description | Value |
 | --- | --- | --- |
-| Language | Programming language used to implement the backend | Python 3.7 |
+| Platform | Programming language used to implement the backend | Python 3.7 |
 | Libraries | Library/Module dependencies used to implement the backend | Listed in `requirements.txt ` |
 | Port | Port that the backend server listens on | 5000 |
 
@@ -39,4 +39,15 @@ Infomation about the web application used in this practical:
 | `POSTGRES_USER` | Username of the user used to authenticate with the database |
 | `POSTGRES_PASSWORD` | Password of the user used to authenticate with the database |
 
-- Frontend - frontend of the web appication
+- Frontend - frontend of the web appication, displays a simple interface to
+                create and delete organisations
+
+| Attribute | Description | Value |
+| --- | --- | --- |
+| Platform | Frontend is built on NodeJS and the ReactJS framework | NodeJS 12.2.0 |
+| Libraries | Library/Module dependencies used to implement the frontend | Listed in `package.json ` |
+| Port | Port that the frontend server listens on | 3000 |
+
+| Environment Variable | Description |
+| --- | --- |
+| `REACT_APP_API_HOST` | DNS name/IP address of the backend server |
