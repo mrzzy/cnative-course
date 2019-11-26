@@ -15,9 +15,8 @@ WORKDIR /backend
 
 # install packages & pip modules
 RUN apk add --no-cache postgresql-libs bash && \
-    apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev \
+    apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev 
 
-    
 # TODO: install pip modules
 COPY src/backend/requirements.txt /backend/
 RUN python3 -m pip install -r requirements.txt --no-cache-dir

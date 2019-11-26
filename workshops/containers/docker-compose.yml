@@ -34,7 +34,7 @@ services:
       - "DATABASE_HOST=database:5432"
     # TODO: specify container dependency
     depends_on:
-      - postgres
+      - database
   frontend:
     # TODO: update image name your dockerhub username
     image: mrzzy/memento-frontend
@@ -59,4 +59,4 @@ services:
     depends_on:
       - backend
 volumes:
-  database-data
+  database-data: {}

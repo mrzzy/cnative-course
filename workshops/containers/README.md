@@ -29,7 +29,6 @@ In this practical, we will apply the container know how we learnt by:
     - register for account on [Docker Hub](https://hub.docker.com/). Take note of your username (aka docker id)
     - authenticate with your new docker hub account on your machine with `docker login`
     - complete `docker-compose.yml` to define the app's stack
-        - make sure you tag the docker images that you in the format: `<username>/<name of image>`
     - make a copy `env` as `.env` and complete it with environment config
     - run `docker-compose build` to build the images
     - push the built images to Docker Hub with `docker-compose push`
@@ -56,11 +55,11 @@ In this practical, we will apply the container know how we learnt by:
             - `sudo pip3 install docker-compose`
     4. Deploy the stack with `docker-compose`
         - using a text editor (ie `nano`) copy the `.env` file to your server
-        - using a text editor (ie `nano`) copy the `docker-compose.yml` file to your server
         - pull the docker images from Docker Hub:
-            - `sudo docker pull <username>/postgres:12.0-alpine`
+            - `sudo docker pull postgres:12.0-alpine`
             - `sudo docker pull <username>/memento-backend`
             - `sudo docker pull <username>/memento-frontend`
+        - using a text editor (ie `nano`) copy the `docker-compose.yml` file to your server
         - using a text editor (ie `nano`) and edit the `docker-compose.yml` file 
             - change the host port mapping for frontend  from `3000` to `80`
             - change the host port mapping for backend  from `5000` to `443`
