@@ -6,6 +6,7 @@
 
 # postgres database config
 POSTGRES_USER=docker
+# TODO: create a password for the database.
 POSTGRES_PASSWORD=
 POSTGRES_DB=memento
 
