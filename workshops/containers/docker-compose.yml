@@ -8,55 +8,43 @@ version: "3"
 services:
   database:
     # TODO: specify image to use as database
-    image: postgres:12.0-alpine
+    
     # TODO: expose database port
-    expose:
-      - "5432"
+    
     # TODO: configure container environment variables
-    env_file: ".env"
+    
     # TODO: configure storage for database
-    volumes:
-      - database-data:/usr/local/pgsql/data
+
   backend:
     # TODO: update image name your dockerhub username
-    image: mrzzy/memento-backend
+
     build:
       context: .
       dockerfile: containers/backend/Dockerfile
     # TODO: expose and forward backend port to be externally accesssable
     # <external port>:<container port>
-    ports:
-      - "5000:5000"
+    
     # TODO: configure container environment variables
     # use environment variables direct the frontend to find the database
-    env_file: ".env"
-    environment:
-      - "DATABASE_HOST=database:5432"
+
     # TODO: specify container dependency
-    depends_on:
-      - database
+
   frontend:
     # TODO: update image name your dockerhub username
-    image: mrzzy/memento-frontend
+
     build:
       context: .
       dockerfile: containers/frontend/Dockerfile
     # TODO: expose and forward frontend port to be externally accesssable
     # <external port>:<container port>
-    ports: 
-      - "3000:3000"
+
     # TODO: configure container environment variables
     # use environment variables direct the frontend to find the backend
-    env_file: ".env"
-    environment:
-      - "BACKEND_HOST=backend:5000"
-      - "REACT_APP_API_HOST=localhost:5000"
+
     # TODO: create a bind mount from /src/frontend to /frontend for hot reload demo
     # NOTE: remove this section when deploying to google cloud
-    volumes:
-      - "./src/frontend:/frontend:ro"
+
     # TODO: specify container dependency
-    depends_on:
-      - backend
+
 volumes:
   database-data: {}
