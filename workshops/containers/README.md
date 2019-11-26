@@ -64,10 +64,13 @@ In this practical, we will apply the container know how we learnt by:
         - using a text editor (ie `nano`) and edit the `docker-compose.yml` file 
             - change the host port mapping for frontend  from `3000` to `80`
             - change the host port mapping for backend  from `5000` to `443`
+            - change `REACT_APP_API_HOST` to `<your servers ip>:443`
         - delete the volumes section for the frontend in `docker-compose.yml`
         - bring up the stack with `sudo docker-compose up`
-    5. ![GCE Instance Status](./assets/gce_instance_status.png)
-        - Access the app at the your server's external IP
+    5.  Access the app at the your server's external IP
+
+> The change of ports is required to ensure that we can access the app through
+> firewalls, which typically do not not block ports 443 and 80.
 
 ## App Infomation
 Infomation about the web application that are useful for this practical:
